@@ -23,7 +23,7 @@ jobs:
           sudo apt update
           sudo apt install ninja-build
       - name: install opencl
-        uses: KhrySystem/install-opencl@v1
+        uses: KhrySystem/install-opencl@main
         with:
           version: v2022.09.30
       - name: run cmake
