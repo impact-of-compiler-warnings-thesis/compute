@@ -21,11 +21,12 @@ jobs:
       - name: Install deps
         run: |
           sudo apt update
-          sudo apt install ninja-build libopencl-clang-dev
+          sudo apt install ninja-build
+      - name: install opencl
+        uses: KhrySystem/install-opencl
+        with:
+          version: v2022.09.30
       - name: run cmake
-        env:
-          CXX: clang++
-          CC: clang
         run: |
           mkdir build
           cd build 
