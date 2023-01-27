@@ -28,12 +28,10 @@ jobs:
         with:
           version: v2022.09.30
       - name: run cmake
-        env:
-          OpenCL_LIBRARY: ${{ steps.open-cl.outputs.OpenCL_LIBRARY }}
         run: |
           mkdir build
           cd build 
-          cmake .. -GNinja
+          cmake .. -GNinja -DOpenCL_LIBRARY=${{ steps.open-cl.outputs.OpenCL_LIBRARY }}
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
