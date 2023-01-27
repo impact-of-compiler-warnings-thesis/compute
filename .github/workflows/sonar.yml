@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir build
           cd build 
-          cmake .. -GNinja -CMAKE_BUILD_TYPE=Debug -DBOOST_COMPUTE_BUILD_TESTS=ON -DBOOST_COMPUTE_BUILD_BENCHMARKS=ON -DBOOST_COMPUTE_BUILD_EXAMPLES=ON
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug -DBOOST_COMPUTE_BUILD_TESTS=ON -DBOOST_COMPUTE_BUILD_BENCHMARKS=ON -DBOOST_COMPUTE_BUILD_EXAMPLES=ON
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
