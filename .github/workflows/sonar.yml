@@ -22,6 +22,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build
+      - uses: Jimver/cuda-toolkit@v0.2.8
+        id: cuda-toolkit
+        with:
+          cuda: "11.7.0"
       - name: install opencl
         id: open-cl
         uses: KhrySystem/install-opencl@main
@@ -29,8 +33,8 @@ jobs:
           version: v2022.09.30
       - name: run cmake
         env:
-          OpenCL_INCLUDE_DIR: ${{steps.open-cl.outputs.OpenCL_INSTALL_DIR_ROOT}}
-          OpenCL_LIBRARY: ${{ steps.open-cl.outputs.OpenCL_LIBRARY }}
+          OpenCL_INCLUDE_DIR: /home/runner/work/compute/compute/opencl-sdk.cache/install/include
+          OpenCL_LIBRARY: /home/runner/work/compute/compute/opencl-sdk.cache/bin/opencl.lib
         run: |
           mkdir build
           cd build 
